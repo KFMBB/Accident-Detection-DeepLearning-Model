@@ -24,12 +24,17 @@ file = st.file_uploader("Choose an accident photo from your computer", type=["jp
 
 # Image preprocessing function
 def import_and_predict(image_data, model):
-    size = (256, 256)
-    image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)  # Updated line
-    img = np.asarray(image)
-    img_reshape = img[np.newaxis, ...]
-    prediction = model.predict(img_reshape)
-    return prediction
+    try:
+        size = (256, 256)
+        image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)
+        img = np.asarray(image)
+        img_reshape = img[np.newaxis, ...]
+        prediction = model.predict(img_reshape)
+        return prediction
+    except Exception as e:
+        logging.error(f"Error in import_and_predict: {e}")
+        st.error(f"Error processing image: {e}")
+        return None
 
 # If no file is uploaded, prompt the user
 if file is None:
