@@ -25,7 +25,7 @@ file = st.file_uploader("Choose an accident photo from your computer", type=["jp
 # Image preprocessing function
 def import_and_predict(image_data, model):
     size = (256, 256)
-    image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+    image = ImageOps.fit(image_data, size, Image.Resampling.LANCZOS)  # Updated line
     img = np.asarray(image)
     img_reshape = img[np.newaxis, ...]
     prediction = model.predict(img_reshape)
@@ -36,15 +36,12 @@ if file is None:
     st.text("Please upload an image file.")
 else:
     try:
-
         image = Image.open(file)
-
 
         if image.mode != "RGB":
             st.warning("Please upload an RGB image.")
         else:
             st.image(image, use_column_width=True)
-
 
             with st.spinner('Processing...'):
                 prediction = import_and_predict(image, model)
@@ -53,13 +50,10 @@ else:
             predicted_class = class_names[np.argmax(prediction)]
             confidence = np.max(prediction)
 
-
             st.success(f"OUTPUT: {predicted_class}")
             st.write(f"Confidence: {confidence:.2f}")
 
-
             logging.info(f"User uploaded an image. Prediction: {predicted_class}, Confidence: {confidence:.2f}")
-
 
             def grad_cam(input_model, image, layer_name):
                 grad_model = tf.keras.models.Model(
@@ -91,5 +85,3 @@ feedback = st.text_input("Provide feedback:")
 if st.button("Submit Feedback"):
     st.success("Thank you for your feedback!")
     logging.info(f"User feedback: {feedback}")
-
-
