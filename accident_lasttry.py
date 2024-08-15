@@ -10,7 +10,7 @@ logging.basicConfig(filename='app.log', level=logging.INFO)
 # Cache the model using the new caching command
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('/content/Accident_Detection_Model.h5')
+    model = tf.keras.models.load_model('Accident_Detection_Model.h5')
     return model
 
 model = load_model()
