@@ -33,3 +33,7 @@ A confusion matrix may be used to further understand the model's predictions.
 Deployment:
 
 Once trained, the model can be deployed in a Streamlit app or another suitable platform to enable real-time detection of accidents from live CCTV feeds.
+
+Data Source: https://www.kaggle.com/datasets/ckay16/accident-detection-from-cctv-footage
+
+Streamlit app: https://accident-detection-deeplearning-model-gctm55abw2cexnwswghcbp.streamlit.app/
