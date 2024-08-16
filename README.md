@@ -1,16 +1,18 @@
-Project Introduction: Accident Detection from CCTV Footage Using CNN
+# Project Introduction
+Accident Detection from CCTV Footage Using CNN
 In this project, the goal is to develop a Convolutional Neural Network (CNN) model that can automatically detect accidents from CCTV footage. With the growing number of surveillance cameras in urban areas, there is a significant opportunity to use this data to enhance public safety by quickly identifying and responding to traffic accidents.
 
-Dataset Overview
+# Dataset Overview
 The dataset used for this project, available on Kaggle, contains video footage extracted from CCTV cameras. The dataset is labeled to indicate whether an accident has occurred in each video clip.
 
-Structure: The dataset includes various video frames or sequences, which are either labeled as containing an accident or not.
+# Structure
+The dataset includes various video frames or sequences, which are either labeled as containing an accident or not.
 Classes: There are typically two classes — "Accident" and "No Accident."
 Format: The data may consist of video files, which are broken down into frames for processing.
 Objective
 The primary objective of this project is to build a CNN model that can accurately classify video frames or sequences into "Accident" and "No Accident" categories. This classification can help in real-time monitoring systems to automatically alert authorities or initiate other safety measures in case of an accident.
 
-Methodology
+# Methodology
 Data Preprocessing:
 
 Convert video files into frames.
