@@ -4,10 +4,8 @@ from PIL import Image, ImageOps
 import numpy as np
 import logging
 import cv2
-# Enable logging
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
-# Cache the model using the new caching command
 @st.cache_resource
 def load_model():
     model = tf.keras.models.load_model('Accident_Detection_Model.h5')
@@ -15,14 +13,11 @@ def load_model():
 
 model = load_model()
 
-# Set the title and description
 st.title("Accident Detection System")
 st.write("Upload an image to detect whether it shows an accident or not.")
 
-# File uploader for image input
 file = st.file_uploader("Choose an accident photo from your computer", type=["jpg", "png"])
 
-# Image preprocessing function
 def import_and_predict(image_data, model):
     try:
         size = (256, 256)
@@ -33,7 +28,7 @@ def import_and_predict(image_data, model):
         return prediction
     except Exception as e:
         logging.error(f"Error in import_and_predict: {e}")
-        st.error(f"Error processing image: {e}")
+        # st.error(f"Error processing image: {e}")
         return None
 
 # If no file is uploaded, prompt the user
@@ -82,10 +77,9 @@ else:
             st.image(heatmap, caption='Grad-CAM Heatmap', use_column_width=True)
 
     except Exception as e:
-        st.error(f"Error loading image: {e}")
+       # st.error(f"Error loading image: {e}")
         logging.error(f"Error loading image: {e}")
 
-# Feedback form
 feedback = st.text_input("Provide feedback:")
 if st.button("Submit Feedback"):
     st.success("Thank you for your feedback!")
