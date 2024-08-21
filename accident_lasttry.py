@@ -91,7 +91,7 @@ else:
 
     except Exception as e:
         logging.error(f"Error loading image: {e}")
-        st.error("Error processing image. Please try a different image.")
+        # st.error("Error processing image. Please try a different image.")
 
 # Feedback section
 feedback = st.text_input("Provide feedback:")
