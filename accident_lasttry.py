@@ -11,7 +11,7 @@ logging.basicConfig(filename='app.log', level=logging.INFO)
 # Load the model using the new Streamlit caching method
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('Accident_Detection_Model.h5')
+    model = tf.keras.models.load_model('best_model.keras')
     return model
 
 model = load_model()
